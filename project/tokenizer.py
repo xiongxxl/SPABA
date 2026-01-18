@@ -25,7 +25,3 @@ if __name__ == "__main__":
     line='Oc1ccc(Cl)cc1Cl'
     A=tokenize_smiles(line)
     print(len(A))
-
-
-
-

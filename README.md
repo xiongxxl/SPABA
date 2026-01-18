@@ -32,12 +32,24 @@ Extracting molecular fragments
 3. The `statistic_img` code visualizes the statistical results.
 
 
-Predicting  reaction centers
+PABA predicted  reaction centers (details is in https://github.com/xiongxxl/PABA).
 
 ---
 1. According to the PABA algorithm, the reaction center attention matrix is obtained, and the ground truth of reaction sites, named `double_criterion_100`, is placed in the `statistic_reactive` folder.
 2. `main_predict_heads` identifies the optimal heads, `main_find_alpha` determines the specific alpha values, `main_combine_heads` generates the combined results, and `main_predict_heads` provides the final prediction outcomes.
 3. The `statistic_image` code displays both the data processing steps and the final results.
+
+
+SPABA predicted  reaction centers
+
+---
+
+1. The sample SMILES are fed into the CLM to generate the corresponding attention matrix files, which are stored in data/middle_attention/npy_supervision/uspto/attention. The pretrained model parameters are downloaded and placed in
+data/result/statistics_supervision/{head}/result/network.
+2. The script main_test.py is executed, and the resulting outputs are saved in data/result/statistics_supervision/{head}/result/network.
+3. The function in evaluation/deep_index_label is used to convert the binarized outputs of the deep learning model into RDKit atom indices.Subsequently, evaluation/index_auto_img.py is applied to visualize the results as images, which are then saved for further analysis.
+4. The script main_train.py is used to retrain the model with newly introduced samples.
+
 
 
 

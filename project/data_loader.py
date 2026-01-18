@@ -75,40 +75,57 @@ class SmilesNpyDataset(Dataset):
 
 # 使用示例
 if __name__ == "__main__":
-    head='all'
+    # head='all'
+    # current_dir = os.getcwd()
+    # parent_dir = os.path.dirname(current_dir)
+    # sample_file_name=f'data/middle_attention/name_sample/{head}/npy/del_1000_v04'
+    # sample_file=os.path.join(parent_dir,sample_file_name)
+    # label_file_name = f'data/middle_attention/name_sample/{head}/label/'
+    # label_folder = os.path.join(parent_dir, label_file_name)
+    # label_excel = os.path.join(label_folder, 'output_with_highlight_1500 _del_v02_20250423_deep_replace.xlsx')
+    #
+    head = '7_7_2'
+    attn = 'del'
+    # way='maximum'
     current_dir = os.getcwd()
     parent_dir = os.path.dirname(current_dir)
-    sample_file_name= f'paba/data/middle_attention/name_sample/{head}/npy/del_1000_v04'
-    sample_file=os.path.join(parent_dir,sample_file_name)
-    label_file_name = f'paba/data/middle_attention/name_sample/{head}/label/'
+    sample_file_name = f'data/result/statistics_supervision/uspto_yang/shield/{head}/npy/deep_attn_{attn}_{head}'
+    sample_file = os.path.join(parent_dir, sample_file_name)
+    label_file_name = f'data/result/statistics_supervision/uspto_yang/shield/{head}/label'
     label_folder = os.path.join(parent_dir, label_file_name)
-    label_excel = os.path.join(label_folder, 'output_with_highlight_1500 _del_v02_20250423_deep_replace.xlsx')
+    label_excel = os.path.join(label_folder, 'uspto_yang_reactive_atom_orgin_50k_indices_atoms_deep.xlsx')
 
     # 参数配置
-    NPY_DIR = sample_file  # NPY文件目录
-    EXCEL_PATH = label_excel  # Excel文件路径
-    SMILES_COL = "smiles"  # SMILES列名
-    LABEL_COL = "deep_criterion"  # 标签列名
-    MAX_LENGTH = 512  # 统一长度
-    BATCH_SIZE = 1
-    EPOCHS = 50
-    LEARNING_RATE = 0.001
+    npy_dir = sample_file  # NPY文件目录
+    excel_path = label_excel  # Excel文件路径
+    smiles_col = "reactant"  # SMILES列名
+    label_col = "reactive_atoms_deep"  # 标签列名
+    max_length = 512  # 统一长度
+    max_atom = 4
 
-    # 加载数据
-    dataset = SmilesNpyDataset(
-        npy_dir=NPY_DIR,
-        excel_path=EXCEL_PATH,
-        smiles_column=SMILES_COL,
-        label_column=LABEL_COL,
-        max_length=MAX_LENGTH
+    ##para
+
+    network = "transformer"
+    batch_size = 16
+    epochs = 100
+    learn_rate = 5e-05
+    drop = 0.3
+    weight_decay = 0
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    ##save_files
+    save_name = "network"
+    datset = "uspto_yang"
+    print("save_name", save_name)
+
+    print("para:", head, network, batch_size, epochs, learn_rate, drop, weight_decay)
+    custom_dataset = SmilesNpyDataset(
+        npy_dir=npy_dir,
+        excel_path=excel_path,
+        smiles_column=smiles_col,
+        label_column=label_col,
+        max_length=max_length
     )
-    #
-    A,B,C=dataset[1]
-    print(A)
-    print(B)
-    print(C)
-
-
+    A,B,C,D=custom_dataset[0]
 
 
     # class NpyExcelDataset(Dataset):
