@@ -45,7 +45,8 @@ SPABA predicted  reaction centers
 ---
 
 1. The sample SMILES are fed into the CLM to generate the corresponding attention matrix files, which are stored in data/middle_attention/npy_supervision/uspto/attention. The pretrained model parameters are downloaded and placed in
-data/result/statistics_supervision/{head}/result/network.
+data/result/statistics_supervision/{head}/result/network，linking: https://pan.baidu.com/s/1syED4kAoT21y8xLRKw-pjw?pwd=nv2k  password  : nv2k 
+
 2. The script main_test.py is executed, and the resulting outputs are saved in data/result/statistics_supervision/{head}/result/network.
 3. The function in evaluation/deep_index_label is used to convert the binarized outputs of the deep learning model into RDKit atom indices.Subsequently, evaluation/index_auto_img.py is applied to visualize the results as images, which are then saved for further analysis.
 4. The script main_train.py is used to retrain the model with newly introduced samples.
