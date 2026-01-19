@@ -49,7 +49,7 @@ data/result/statistics_supervision/{head}/result/network，linking: https://pan.
 
 2. The script main_test.py is executed, and the resulting outputs are saved in data/result/statistics_supervision/{head}/result/network.
 3. The function in evaluation/deep_index_label is used to convert the binarized outputs of the deep learning model into RDKit atom indices.Subsequently, evaluation/index_auto_img.py is applied to visualize the results as images, which are then saved for further analysis.
-4. The script main_train.py is used to retrain the model with newly introduced samples.
+
 
 
 
