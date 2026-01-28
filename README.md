@@ -35,7 +35,7 @@ Extracting molecular fragments
 PABA predicted  reaction centers (details is in https://github.com/xiongxxl/PABA).
 
 ---
-1. According to the PABA algorithm, the reaction center attention matrix is obtained, and the ground truth of reaction sites, named `double_criterion_100`, is placed in the `statistic_reactive` folder.
+1. According to the PABA algorithm, the reaction center attention matrix is obtained, and the ground truth of reaction sites, named `USPTO subset`, is placed in the `statistic_reactive` folder.
 2. `main_predict_heads` identifies the optimal heads, `main_find_alpha` determines the specific alpha values, `main_combine_heads` generates the combined results, and `main_predict_heads` provides the final prediction outcomes.
 3. The `statistic_image` code displays both the data processing steps and the final results.
 
